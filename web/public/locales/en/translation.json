@@ -1,10 +1,10 @@
 {
-    "logoTitle": "KrrishPrahari",
-    "Diagnose now": "Diagnose now",
-    "heroTitle": "Your Crop's Personal Doctor",
-    "heroDescription": "Disease Diagnosis Made Easy",
-    "heroButton": "Explore our features",
-    "uploadTitle": "Show us your crop",
-    "uploadDiscription": "Upload your crop's image here",
-    "captureCrop": "or Capture your crop"
+  "logoTitle": "KrrishPrahari",
+  "diagnoseButton": "Diagnose now",
+  "heroTitle": "Your Crop's Personal Doctor",
+  "heroDescription": "Disease Diagnosis Made Easy",
+  "heroButton": "Explore our features",
+  "uploadTitle": "Show us your crop",
+  "uploadDiscription": "Upload your crop's image here",
+  "captureCrop": "Capture your crop"
 }

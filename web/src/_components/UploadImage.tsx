@@ -32,7 +32,7 @@ export default function UploadImage() {
     setImgPrep(false);
   }, [webcamRef]);
   return (
-    <section className="bg-teaGreen flex w-[95%] flex-col gap-5 rounded-xl p-5 lg:w-[90%]">
+    <section className="bg-teaGreen flex w-[95%] flex-col gap-5 rounded-xl p-5 lg:w-[85%]">
       <header className="text-xl font-bold sm:text-2xl">
         Show us your crop
       </header>
