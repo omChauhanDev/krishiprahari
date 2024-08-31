@@ -1,7 +1,5 @@
-import React from "react";
-import Navbar from "./Navbar";
-import Content from "./Content";
-// import WebcamImage from "./WebCamImage";
+import Content from "./_components/Content";
+import Navbar from "./_components/Navbar";
 
 export default function App() {
   return (
