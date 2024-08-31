@@ -1,8 +1,13 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { IoCameraOutline, IoCloudUploadOutline } from "react-icons/io5";
+import {
+  IoCameraOutline,
+  IoCloseOutline,
+  IoCloudUploadOutline,
+} from "react-icons/io5";
 import Webcam from "react-webcam";
 export default function UploadImage() {
+  const [open, setOpen] = React.useState(false);
   const { t } = useTranslation();
   const [uploading, setUploading] = React.useState(true);
   const [img, setImg] = React.useState("");
@@ -38,7 +43,14 @@ export default function UploadImage() {
       <header className="text-xl font-bold sm:text-2xl">
         {t("uploadTitle")}
       </header>
-      <form className="flex flex-col items-center gap-5 text-slate-700">
+      <form
+        className="flex flex-col items-center gap-5 text-slate-700"
+        onSubmit={(e) => {
+          e.preventDefault();
+          setOpen(true);
+          console.log("Diagnosing Image");
+        }}
+      >
         {uploading ? (
           <div className="flex w-full flex-col">
             <section className="flex h-[15rem] w-full flex-col gap-5 md:flex-row">
@@ -104,6 +116,22 @@ export default function UploadImage() {
               </div>
             )}
           </div>
+        )}
+        {open && (
+          <>
+            <div
+              className="fixed top-0 z-20 h-screen w-full bg-black/50"
+              onClick={() => setOpen(false)}
+            ></div>
+            <div className="absolute left-1/2 top-1/2 z-50 flex -translate-x-1/2 -translate-y-1/2 flex-col items-end gap-2 rounded-xl bg-white p-4">
+              <IoCloseOutline
+                size={30}
+                className="cursor-pointer"
+                onClick={() => setOpen(false)}
+              />
+              <p>Kuch to hai</p>
+            </div>
+          </>
         )}
         <button
           type="submit"
