@@ -8,7 +8,9 @@ export default function Navbar() {
       <section className="flex w-[95%] items-center justify-between lg:w-[80%]">
         <header className="flex items-center gap-1">
           <img src={logo} alt="Krishi Prahari Logo" height={50} width={50} />
-          <p className="text-3xl font-bold lg:text-4xl">{t("logoTitle")}</p>
+          <p className="text-2xl font-bold md:text-3xl lg:text-4xl">
+            {t("logoTitle")}
+          </p>
         </header>
         <LanguageSelector />
       </section>

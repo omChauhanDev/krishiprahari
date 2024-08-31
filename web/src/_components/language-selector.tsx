@@ -22,16 +22,20 @@ const LanguageSelector = () => {
   };
 
   return (
-    <div className="flex items-center gap-1 rounded-xl bg-white p-2">
+    <div className="flex items-center gap-1 rounded-xl bg-white p-1 md:p-2">
       <MdGTranslate size={25} />
       <select
         title="Select Language"
         value={i18n.language}
         onChange={(e) => changeLanguage(e.target.value)}
-        className="bg-white focus:outline-none"
+        className="md:text-md bg-white text-sm focus:outline-none"
       >
         {languages.map((lng) => (
-          <option key={lng.code} value={lng.code}>
+          <option
+            key={lng.code}
+            value={lng.code}
+            className="md:text-md text-sm"
+          >
             {lng.name}
           </option>
         ))}
