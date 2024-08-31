@@ -4,9 +4,15 @@
 .bg-lightGreen {
   background-color: #eaefbd;
 }
+.bg-pista {
+  background-color: #90be6d;
+}
 .bg-teaGreen {
   background-color: #c9e3ac;
 }
 .bg-darkBrown {
   background-color: #37371f;
+}
+.text-lightGreen {
+  color: #eaefbd;
 }

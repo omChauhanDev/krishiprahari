@@ -4,7 +4,7 @@ import LanguageSelector from "./language-selector";
 export default function Navbar() {
   const { t } = useTranslation();
   return (
-    <nav className="bg-teaGreen flex h-[4rem] justify-center">
+    <nav className="bg-pista flex h-[4rem] justify-center">
       <section className="flex w-[95%] items-center justify-between lg:w-[80%]">
         <header className="flex items-center gap-1">
           <img src={logo} alt="Krishi Prahari Logo" height={50} width={50} />
