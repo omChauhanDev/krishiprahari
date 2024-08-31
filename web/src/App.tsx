@@ -1,4 +1,13 @@
 import React from "react";
+import Navbar from "./Navbar";
+import Content from "./Content";
+// import WebcamImage from "./WebCamImage";
+
 export default function App() {
-  return <div className="bg-red-100">Hello</div>;
+  return (
+    <main className="App flex min-h-screen flex-col">
+      <Navbar />
+      <Content />
+    </main>
+  );
 }
