@@ -1,7 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { IoCameraOutline, IoCloudUploadOutline } from "react-icons/io5";
 import Webcam from "react-webcam";
 export default function UploadImage() {
+  const { t } = useTranslation();
   const [uploading, setUploading] = React.useState(true);
   const [img, setImg] = React.useState("");
   const [imgPrep, setImgPrep] = React.useState(true);
@@ -34,7 +36,7 @@ export default function UploadImage() {
   return (
     <section className="bg-teaGreen flex w-[95%] flex-col gap-5 rounded-xl p-5 lg:w-[85%]">
       <header className="text-xl font-bold sm:text-2xl">
-        Show us your crop
+        {t("uploadTitle")}
       </header>
       <form className="flex flex-col items-center gap-5 text-slate-700">
         {uploading ? (
@@ -43,9 +45,7 @@ export default function UploadImage() {
               <label htmlFor="imageInput" className="w-full">
                 <div className="flex h-full cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 bg-blue-50">
                   <IoCloudUploadOutline size={80} className="" />
-                  <p className="sm:text-md text-sm">
-                    Upload your crop's image here
-                  </p>
+                  <p className="sm:text-md text-sm">{t("uploadDescription")}</p>
                 </div>
                 <input
                   id="imageInput"
@@ -60,7 +60,7 @@ export default function UploadImage() {
                 onClick={handleCameraCapture}
               >
                 <IoCameraOutline size={80} />
-                <p className="sm:text-md text-sm">Take a picture</p>
+                <p className="sm:text-md text-sm">{t("captureCrop")}</p>
               </div>
             </section>
           </div>
@@ -74,13 +74,13 @@ export default function UploadImage() {
                     className="bg-darkBrown w-full rounded-xl py-3 text-white"
                     onClick={handleCapture}
                   >
-                    Capture
+                    {t("capture")}
                   </button>
                   <button
                     className="bg-darkBrown w-full rounded-xl py-3 text-white"
                     onClick={handleCancelCameraCapture}
                   >
-                    Cancel
+                    {t("cancel")}
                   </button>
                 </div>
               </div>
@@ -99,7 +99,7 @@ export default function UploadImage() {
                     setImgPrep(true);
                   }}
                 >
-                  Change Image
+                  {t("changeImage")}
                 </button>
               </div>
             )}
@@ -110,7 +110,7 @@ export default function UploadImage() {
           className={`w-full rounded-xl bg-black py-3 text-white ${imgPrep ? "cursor-not-allowed opacity-60" : ""}`}
           disabled={imgPrep}
         >
-          Diagnose Now
+          {t("diagnoseButton")}
         </button>
       </form>
     </section>

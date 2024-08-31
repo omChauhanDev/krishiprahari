@@ -4,14 +4,14 @@ import { MdGTranslate } from "react-icons/md";
 const languages = [
   { code: "en", name: "English" },
   { code: "hi", name: "Hindi" },
-  // { code: "bn", name: "Bengali" },
-  // { code: "gu", name: "Gujarati" },
-  // { code: "te", name: "Telugu" },
-  // { code: "mr", name: "Marathi" },
-  // { code: "ta", name: "Tamil" },
-  // { code: "kn", name: "Kannada" },
-  // { code: "ml", name: "Malayalam" },
-  // { code: "pa", name: "Punjabi" },
+  { code: "bn", name: "Bengali" },
+  { code: "gu", name: "Gujarati" },
+  { code: "te", name: "Telugu" },
+  { code: "mr", name: "Marathi" },
+  { code: "ta", name: "Tamil" },
+  { code: "kn", name: "Kannada" },
+  { code: "ml", name: "Malayalam" },
+  { code: "pa", name: "Punjabi" },
 ];
 
 const LanguageSelector = () => {
