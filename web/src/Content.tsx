@@ -2,6 +2,7 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import React from "react";
 import WebCamImage from "./WebCamImage";
 import Hero from "./_components/Hero";
+import UploadImage from "./_components/UploadImage";
 export default function Content() {
   const [uploading, setUploading] = React.useState(true);
   const [file, setFile] = React.useState("");
@@ -15,6 +16,7 @@ export default function Content() {
   return (
     <section className="flex h-full w-full grow flex-col items-center justify-center gap-10">
       <Hero />
+      <UploadImage />
       <form className="flex flex-col items-center gap-5 text-slate-700">
         {uploading ? (
           <div className="flex flex-col">
