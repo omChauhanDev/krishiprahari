@@ -25,6 +25,7 @@ const LanguageSelector = () => {
     <div className="flex items-center gap-1 rounded-xl bg-white p-2">
       <MdGTranslate size={25} />
       <select
+        title="Select Language"
         value={i18n.language}
         onChange={(e) => changeLanguage(e.target.value)}
         className="bg-white focus:outline-none"

@@ -86,7 +86,11 @@ export default function UploadImage() {
               </div>
             ) : (
               <div className="flex flex-col gap-3">
-                <img src={img} className="h-full w-full rounded-xl" />
+                <img
+                  src={img}
+                  alt="selected image"
+                  className="h-full w-full rounded-xl"
+                />
                 <button
                   className="w-full rounded-lg bg-black py-3 text-white"
                   onClick={() => {
