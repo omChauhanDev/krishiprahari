@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { AiTwotoneSafetyCertificate } from "react-icons/ai";
 import {
   IoCameraOutline,
   IoCloseOutline,
@@ -14,17 +15,38 @@ export default function UploadImage() {
   const [imgPrep, setImgPrep] = React.useState(true);
   const [cameraCapture, setCameraCapture] = React.useState(false);
   const webcamRef = React.useRef<Webcam>(null);
+  const plantHealth = [
+    {
+      name: "Healthy",
+      description:
+        "The plant is thriving, with vibrant green leaves and strong stems. There are no visible signs of disease, pests, or nutrient deficiencies. The plant's growth is robust, and it appears lush and full of life, indicating optimal conditions for continued development.",
+    },
+    {
+      name: "Light Blight",
+      description:
+        "The plant is showing early signs of disease, specifically blight, which could be caused by fungal or bacterial infections. Symptoms are mild, with some leaves exhibiting small, discolored spots or slight wilting. Although the plant's overall health is still manageable, early intervention is necessary to prevent further spread.",
+    },
+    {
+      name: "Late Blight",
+      description:
+        "The plant is in a critical condition due to advanced blight. This stage is characterized by severe symptoms, including widespread leaf discoloration, extensive wilting, and decay. The plant's ability to survive and produce fruit or flowers is significantly compromised, and immediate treatment or removal may be required to prevent the disease from spreading to nearby plants.",
+    },
+  ];
+
   const imageConstraints = {
     facingMode: "environment",
   };
+
   const handleCameraCapture = () => {
     setCameraCapture(true);
     setUploading(false);
   };
+
   const handleCancelCameraCapture = () => {
     setCameraCapture(false);
     setUploading(true);
   };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const imgUrl = URL.createObjectURL(e.target.files![0]);
     setImg(imgUrl);
@@ -130,13 +152,21 @@ export default function UploadImage() {
               className="fixed top-0 z-20 h-screen w-full bg-black/50"
               onClick={() => setOpen(false)}
             ></div>
-            <div className="absolute left-1/2 top-1/2 z-50 flex -translate-x-1/2 -translate-y-1/2 flex-col items-end gap-2 rounded-xl bg-white p-4">
-              <IoCloseOutline
-                size={30}
-                className="cursor-pointer"
-                onClick={() => setOpen(false)}
-              />
-              <p>Kuch to hai</p>
+            <div className="absolute left-1/2 top-1/2 z-50 flex -translate-x-1/2 -translate-y-1/2 flex-col items-end gap-2 rounded-xl bg-white">
+              <div className="flex flex-col items-center gap-2 rounded-xl bg-green-100 p-4">
+                <p className="flex items-center gap-1 text-xl font-medium">
+                  {plantHealth[0].name} <AiTwotoneSafetyCertificate size={30} />
+                </p>
+                <p className="text-justify text-lg">
+                  {plantHealth[0].description}
+                </p>
+                <button
+                  className="bg-darkBrown flex cursor-pointer items-center rounded-xl px-3 py-1 text-white"
+                  onClick={() => setOpen(false)}
+                >
+                  Close <IoCloseOutline size={30} />
+                </button>
+              </div>
             </div>
           </>
         )}
