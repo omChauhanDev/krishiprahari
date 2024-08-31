@@ -14,6 +14,9 @@ export default function UploadImage() {
   const [imgPrep, setImgPrep] = React.useState(true);
   const [cameraCapture, setCameraCapture] = React.useState(false);
   const webcamRef = React.useRef<Webcam>(null);
+  const imageConstraints = {
+    facingMode: "environment",
+  };
   const handleCameraCapture = () => {
     setCameraCapture(true);
     setUploading(false);
@@ -80,7 +83,11 @@ export default function UploadImage() {
           <div className="flex flex-col">
             {cameraCapture ? (
               <div className="flex flex-col items-center gap-3">
-                <Webcam ref={webcamRef} className="rounded-xl" />
+                <Webcam
+                  ref={webcamRef}
+                  className="rounded-xl"
+                  videoConstraints={imageConstraints}
+                />
                 <div className="flex w-full items-center gap-5">
                   <button
                     className="bg-darkBrown w-full rounded-xl py-3 text-white"
