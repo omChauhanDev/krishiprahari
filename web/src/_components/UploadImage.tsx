@@ -17,7 +17,6 @@ export default function UploadImage() {
   };
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const imgUrl = URL.createObjectURL(e.target.files![0]);
-    console.log(imgUrl);
     setImg(imgUrl);
     setUploading(false);
     setImgPrep(false);
@@ -33,16 +32,20 @@ export default function UploadImage() {
     setImgPrep(false);
   }, [webcamRef]);
   return (
-    <section className="bg-teaGreen flex w-[90%] flex-col gap-5 rounded-xl p-5">
-      <header className="text-2xl font-bold">Show us your crop</header>
+    <section className="bg-teaGreen flex w-[95%] flex-col gap-5 rounded-xl p-5 lg:w-[90%]">
+      <header className="text-xl font-bold sm:text-2xl">
+        Show us your crop
+      </header>
       <form className="flex flex-col items-center gap-5 text-slate-700">
         {uploading ? (
           <div className="flex w-full flex-col">
-            <section className="flex h-[15rem] w-full gap-5">
+            <section className="flex h-[15rem] w-full flex-col gap-5 md:flex-row">
               <label htmlFor="imageInput" className="w-full">
                 <div className="flex h-full cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 bg-blue-50">
                   <IoCloudUploadOutline size={80} className="" />
-                  <p>Upload your crop's image here</p>
+                  <p className="sm:text-md text-sm">
+                    Upload your crop's image here
+                  </p>
                 </div>
                 <input
                   id="imageInput"
@@ -57,7 +60,7 @@ export default function UploadImage() {
                 onClick={handleCameraCapture}
               >
                 <IoCameraOutline size={80} />
-                <p>Take a picture</p>
+                <p className="sm:text-md text-sm">Take a picture</p>
               </div>
             </section>
           </div>
