@@ -2,3 +2,4 @@
 node_modules
 package-lock.json
 model/cnn_model.pkl
+model/test/
