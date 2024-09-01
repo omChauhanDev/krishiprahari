@@ -7,18 +7,20 @@ import {
 } from "react-icons/io5";
 import { PulseLoader } from "react-spinners";
 import Webcam from "react-webcam";
-
+import { imageUpload } from "../actions/fileUpload";
 export default function UploadImage() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const [moreDetails, setMoreDetails] = React.useState(false);
   const { t } = useTranslation();
+  const [file, setFile] = React.useState<File | null>(null);
   const [uploading, setUploading] = React.useState(true);
   const [img, setImg] = React.useState("");
   const [imgPrep, setImgPrep] = React.useState(true);
   const [cameraCapture, setCameraCapture] = React.useState(false);
   const webcamRef = React.useRef<Webcam>(null);
-  const diseaseName = "Apple__Cedar_apple_rust";
+  // const diseaseName = "Apple__Cedar_apple_rust";
   const [loading, setLoading] = React.useState(false);
+  const [diseaseName, setDiseaseName] = React.useState("");
   const imageConstraints = {
     facingMode: "environment",
   };
@@ -34,6 +36,7 @@ export default function UploadImage() {
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFile(e.target.files![0]);
     const imgUrl = URL.createObjectURL(e.target.files![0]);
     setImg(imgUrl);
     setUploading(false);
@@ -57,11 +60,11 @@ export default function UploadImage() {
       </header>
       <form
         className="flex flex-col items-center gap-5 text-slate-700"
-        onSubmit={(e) => {
+        onSubmit={async (e) => {
           e.preventDefault();
           setLoading(true);
           setOpen(true);
-          //after output is received
+          setDiseaseName(await imageUpload(file));
           setLoading(false);
           console.log("Diagnosing Image");
         }}
