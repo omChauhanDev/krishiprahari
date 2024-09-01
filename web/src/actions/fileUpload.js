@@ -1,25 +1,22 @@
 import axios from "axios";
-const baseUrl = `${import.meta.env.VITE_BASEURL}`;
+const baseUrl = "http://localhost:3000/api/v1";
 
-export const imageUpload = async (tag, file, setUser) => {
+export const imageUpload = async (file) => {
     try {
-      const token = localStorage.getItem("token");
       const formData = new FormData();
-      formData.append("tag", tag);
-      formData.append("file", file);
+      formData.append("image", file);
   
       const response = await axios.post(
-        `${baseUrl}/upload/imageUpload`,
+        `${baseUrl}/upload/image`,
         formData,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
           },
         }
       );
   
-      if (response.data.success) {
+      if (response.success) {
         getUserDetails(setUser);
       }
       return response;

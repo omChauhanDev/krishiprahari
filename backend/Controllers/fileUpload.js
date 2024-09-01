@@ -29,8 +29,9 @@ exports.imageUpload = async (req, res) => {
     await file.mv(filePath);
     const modelPath = path.join(__dirname, '..', 'model', 'resnet_from_scratch.h5'); 
     // Call the Python script with the image path
-    // execFile('python3', [path.join(__dirname, '..', 'model', 'run_model.py'), #For local host
-    execFile('/var/task/.python/bin/python3', [path.join(__dirname, '..', 'model', 'run_model.py'),
+    execFile('python3', [path.join(__dirname, '..', 'model', 'run_model.py'),
+    // For production server 
+    // execFile('/var/task/.python/bin/python3', [path.join(__dirname, '..', 'model', 'run_model.py'),
       filePath,
       modelPath,
     ], (error, stdout, stderr) => {
