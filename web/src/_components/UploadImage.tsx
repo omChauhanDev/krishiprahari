@@ -5,19 +5,20 @@ import {
   IoCloseOutline,
   IoCloudUploadOutline,
 } from "react-icons/io5";
+import { PulseLoader } from "react-spinners";
 import Webcam from "react-webcam";
 
 export default function UploadImage() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const [moreDetails, setMoreDetails] = React.useState(false);
   const { t } = useTranslation();
   const [uploading, setUploading] = React.useState(true);
   const [img, setImg] = React.useState("");
-  const [imgPrep, setImgPrep] = React.useState(false);
+  const [imgPrep, setImgPrep] = React.useState(true);
   const [cameraCapture, setCameraCapture] = React.useState(false);
   const webcamRef = React.useRef<Webcam>(null);
   const diseaseName = "Apple__Cedar_apple_rust";
-
+  const [loading, setLoading] = React.useState(false);
   const imageConstraints = {
     facingMode: "environment",
   };
@@ -58,7 +59,10 @@ export default function UploadImage() {
         className="flex flex-col items-center gap-5 text-slate-700"
         onSubmit={(e) => {
           e.preventDefault();
+          setLoading(true);
           setOpen(true);
+          //after output is received
+          setLoading(false);
           console.log("Diagnosing Image");
         }}
       >
@@ -139,68 +143,77 @@ export default function UploadImage() {
               onClick={() => setOpen(false)}
             ></div>
             <div className="absolute left-1/2 top-1/2 z-50 flex w-[80%] -translate-x-1/2 -translate-y-1/2 flex-col items-end gap-2 rounded-xl bg-white md:w-[70%] lg:w-[47%]">
-              {moreDetails ? (
-                <div className="flex flex-col items-center justify-center gap-2 rounded-xl bg-green-100 p-4">
-                  <p className="text-xl">
-                    <span className="text-2xl font-medium">
-                      {t("precautionsLabel")}:{" "}
-                    </span>
-                    {t(`diseases.${diseaseName}.precautions`)}
-                  </p>
-                  <p className="text-xl">
-                    <span className="text-2xl font-medium">
-                      {t("treatmentLabl")}
-                    </span>
-                    {t(`diseases.${diseaseName}.treatment`)}
-                  </p>
-                  <p className="text-xl">
-                    <span className="text-2xl font-medium">
-                      {t("waterRequirementLabel")}
-                    </span>
-                    {t(`diseases.${diseaseName}.water`)}
-                  </p>
-                  <div className="flex w-full items-center justify-between">
-                    <button
-                      onClick={() => setMoreDetails(false)}
-                      className="bg-darkBrown mt-4 w-full rounded-lg py-2 text-white"
-                    >
-                      {t("backButton")}
-                    </button>
-                  </div>
+              {loading ? (
+                <div className="flex h-[10rem] w-full items-center justify-center rounded-xl bg-green-100">
+                  <PulseLoader className="" />
                 </div>
               ) : (
-                <div className="flex flex-col gap-2 rounded-xl bg-green-100 p-4">
-                  <header className="text-3xl font-bold">
-                    {t("cropLabel")}: {t(`diseases.${diseaseName}.leafName`)}
-                  </header>
-                  <p className="text-xl">
-                    <span className="text-2xl font-medium">
-                      {t("statusLabel")}:{" "}
-                      {t(`diseases.${diseaseName}.diseaseName`)}
-                    </span>
-                  </p>
-                  <p className="text-xl">
-                    <span className="text-2xl font-medium">
-                      {t("descriptionLabel")}:{" "}
-                    </span>
-                    {t(`diseases.${diseaseName}.description`)}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <button
-                      className="bg-darkBrown mt-4 w-full rounded-lg py-2 text-white"
-                      onClick={() => setMoreDetails(true)}
-                    >
-                      {t("moreDetailsButton")}
-                    </button>
-                  </div>
-                </div>
+                <>
+                  {moreDetails ? (
+                    <div className="flex flex-col items-center justify-center gap-2 rounded-xl bg-green-100 p-4">
+                      <p className="text-xl">
+                        <span className="text-2xl font-medium">
+                          {t("precautionsLabel")}: <br />
+                        </span>
+                        {t(`diseases.${diseaseName}.precautions`)}
+                      </p>
+                      <p className="text-xl">
+                        <span className="text-2xl font-medium">
+                          {t("treatmentLabl")}: <br />
+                        </span>
+                        {t(`diseases.${diseaseName}.treatment`)}
+                      </p>
+                      <p className="text-xl">
+                        <span className="text-2xl font-medium">
+                          {t("waterRequirementLabel")} : <br />
+                        </span>
+                        {t(`diseases.${diseaseName}.water`)}
+                      </p>
+                      <div className="flex w-full items-center justify-between">
+                        <button
+                          onClick={() => setMoreDetails(false)}
+                          className="bg-darkBrown mt-4 w-full rounded-lg py-2 text-white"
+                        >
+                          {t("backButton")}
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col gap-2 rounded-xl bg-green-100 p-4">
+                      <header className="text-3xl font-bold">
+                        {t("cropLabel")}:{" "}
+                        {t(`diseases.${diseaseName}.leafName`)}
+                      </header>
+                      <p className="text-xl">
+                        <span className="text-2xl font-medium">
+                          {t("statusLabel")}:{" "}
+                          {t(`diseases.${diseaseName}.diseaseName`)}
+                        </span>
+                      </p>
+                      <p className="text-xl">
+                        <span className="text-2xl font-medium">
+                          {t("descriptionLabel")}:{" "}
+                        </span>
+                        {t(`diseases.${diseaseName}.description`)}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <button
+                          className="bg-darkBrown mt-4 w-full rounded-lg py-2 text-white"
+                          onClick={() => setMoreDetails(true)}
+                        >
+                          {t("moreDetailsButton")}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                  <button
+                    className="absolute right-0 top-0 mr-2 mt-2 text-gray-700"
+                    onClick={() => setOpen(false)}
+                  >
+                    <IoCloseOutline size={30} />
+                  </button>
+                </>
               )}
-              <button
-                className="absolute right-0 top-0 mr-2 mt-2 text-gray-700"
-                onClick={() => setOpen(false)}
-              >
-                <IoCloseOutline size={30} />
-              </button>
             </div>
           </>
         )}
