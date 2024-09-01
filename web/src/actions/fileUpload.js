@@ -12,7 +12,7 @@ export const imageUpload = async (file) => {
       },
     });
 
-    if (response.success) {
+    if (response.data.success) {
       console.log("Image uploaded successfully", response);
     }
     console.log("response from backend is", response);

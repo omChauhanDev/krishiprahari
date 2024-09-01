@@ -19,7 +19,7 @@
   "backButton": "Back",
   "moreDetailsButton": "More Details",
   "diseases": {
-    "Apple__Cedar_apple_rust": {
+    "Apple___Cedar_apple_rust": {
       "leafName": "Apple",
       "diseaseName": "Cedar Apple Rust",
       "description": "Cedar Apple Rust is a fungal disease that causes bright orange, yellow, or reddish spots on apple leaves, leading to reduced fruit quality and yield.",
@@ -27,7 +27,7 @@
       "treatment": "Apply fungicides at bud break and continue through the growing season as needed. Prune infected leaves and dispose of them properly.",
       "water": "Ensure consistent watering, avoiding overhead irrigation to reduce leaf wetness and prevent the spread of the disease."
     },
-    "Apple__healthy": {
+    "Apple___healthy": {
       "leafName": "Apple",
       "diseaseName": "Healthy",
       "description": "This apple leaf is healthy with no signs of disease or damage, indicating optimal growing conditions and proper care.",
@@ -35,7 +35,7 @@
       "treatment": "No treatment necessary. Continue regular care and monitoring to keep the plant healthy.",
       "water": "Provide consistent watering according to the plant's needs, avoiding both under-watering and over-watering."
     },
-    "Corn_(maize)__Common_rust": {
+    "Corn_(maize)___Common_rust_": {
       "leafName": "Corn (maize)",
       "diseaseName": "Common Rust",
       "description": "Common Rust in maize causes small, reddish-brown pustules on leaves, which can reduce photosynthesis and yield if severe.",
@@ -51,7 +51,7 @@
       "treatment": "Apply fungicides at the first sign of symptoms. Remove infected debris from the field to prevent overwintering of the fungus.",
       "water": "Water at the base and avoid overhead irrigation to minimize leaf wetness, reducing the spread of blight."
     },
-    "Pepper,bell_Bacterial_spot": {
+    "Pepper,_bell___Bacterial_spot": {
       "leafName": "Pepper, bell",
       "diseaseName": "Bacterial Spot",
       "description": "Bacterial Spot causes small, dark, water-soaked lesions on leaves and fruit, leading to defoliation and reduced fruit quality.",
@@ -59,7 +59,7 @@
       "treatment": "Remove and destroy infected plants. Apply bactericides at the first sign of disease to control spread.",
       "water": "Water at the base of the plants to prevent moisture from splashing onto the leaves, which can spread bacteria."
     },
-    "Pepper,_bell__healthy": {
+    "Pepper,_bell___healthy": {
       "leafName": "Pepper, bell",
       "diseaseName": "Healthy",
       "description": "This bell pepper plant is healthy with no visible signs of disease or stress, indicating good growing conditions.",

@@ -53,7 +53,6 @@ exports.imageUpload = async (req, res) => {
 
         // The result will be in stdout
         const prediction = extractPrediction(stdout);
-        console.log("Prediction extracted from output:", prediction);
         if (prediction) {
           res.json({
             success: true,

@@ -59,7 +59,7 @@ export default function UploadImage() {
         {t("uploadTitle")}
       </header>
       <form
-        className="flex flex-col items-center gap-5 text-slate-700"
+        className="flex flex-col items-center gap-5 text-slate-700 mb-5"
         onSubmit={async (e) => {
           e.preventDefault();
           setLoading(true);
@@ -95,7 +95,7 @@ export default function UploadImage() {
             </section>
           </div>
         ) : (
-          <div className="flex flex-col">
+          <div className="flex flex-col w-full items-center">
             {cameraCapture ? (
               <div className="flex flex-col items-center gap-3">
                 <Webcam
@@ -119,14 +119,16 @@ export default function UploadImage() {
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col items-center gap-3 max-w-[40%]">
                 <img
                   src={img}
                   alt="selected image"
                   className="h-full w-full rounded-xl"
+                  width={200}
+                  height={100}
                 />
                 <button
-                  className="w-full rounded-lg bg-black py-3 text-white"
+                  className="w-fit px-4 rounded-lg bg-darkBrown py-3 text-white"
                   onClick={() => {
                     setUploading(true);
                     setImg("");
@@ -145,15 +147,13 @@ export default function UploadImage() {
               className="fixed top-0 z-20 h-screen w-full bg-black/50"
               onClick={() => setOpen(false)}
             ></div>
-            <div className="absolute left-1/2 top-1/2 z-50 flex w-[80%] -translate-x-1/2 -translate-y-1/2 flex-col items-end gap-2 rounded-xl bg-white md:w-[70%] lg:w-[47%]">
+            <div className="absolute left-1/2 top-1/2 z-50 flex w-fit -translate-x-1/2 -translate-y-1/2 flex-col items-end gap-2 rounded-xl">
               {loading ? (
-                <div className="flex h-[10rem] w-full items-center justify-center rounded-xl bg-green-100">
                   <PulseLoader className="" />
-                </div>
               ) : (
                 <>
                   {moreDetails ? (
-                    <div className="flex flex-col items-center justify-center gap-2 rounded-xl bg-green-100 p-4">
+                    <div className="flex flex-col items-start justify-center gap-2 rounded-xl bg-green-100 p-4 w-full">
                       <p className="text-xl">
                         <span className="text-2xl font-medium">
                           {t("precautionsLabel")}: <br />
@@ -221,7 +221,7 @@ export default function UploadImage() {
           </>
         )}
         <button
-          className={`bg-darkBrown w-full rounded-xl py-3 text-white ${imgPrep ? "cursor-not-allowed" : ""}`}
+          className={`bg-darkBrown px-4 text-nowrap rounded-xl py-3 text-white ${imgPrep ? "hidden" : "block"}`}
           type="submit"
           disabled={imgPrep}
         >
